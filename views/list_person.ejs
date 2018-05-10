@@ -1,0 +1,63 @@
+<div id="content">
+    <h1 class="display-4">Personnes</h1>
+    <table class="table table-striped">
+        <thead>
+            <tr>
+                <th>Nom</th>
+                <th>Prenom</th>
+                <th>CIN</th>
+                <th>Classe</th>
+                <th></th>
+            </tr>
+        </thead>
+        <tbody>
+            <% personnes.forEach(function(personne){ %>
+                <tr>
+                    <td>
+                        <%= personne.nom.value %>
+                    </td>
+                    <td>
+                        <%= personne.prenom.value %>
+                    </td>
+                    <td>
+                        <%= personne.cin.value %>
+                    </td>
+                    <td>
+                        <a href="/Classe/showclass/<%= personne.classe.value %>" class="btn btn-success">View Class</a>
+                        <a href="/Personne/edit/<%= personne.id.value %>" class="btn btn-primary">Edit</a>
+                        <input type="submit" value="Delete" class="btn btn-danger" onclick="confirmDelete('<%=personne.id.value %>');">
+                    </td>
+                </tr>
+                <% }) %>
+        </tbody>
+    </table>
+</div>
+<a class="nav-link" href="/Personne/add">Add Person</a>
+
+<script>
+    function confirmDelete(x) {
+        alertify.confirm("Are you sure ?",
+            function () {
+                document.location.href = "/Personne/delete/" + x;
+            },
+            function () {
+                //alertify.error('Cancel');
+            })
+    }
+    var rand = Math.random();
+    var specialElementHandlers = {
+        '#editor': function (element, renderer) {
+            return true;
+        }
+    };
+
+    $('#bttopdf').click(function () {
+        var doc = new jsPDF();
+        doc.fromHTML($('#content').html(), 15, 15, {
+            'width': 170,
+            'elementHandlers': specialElementHandlers
+        });
+        doc.save('sample-file' + rand + '.pdf');
+    });
+
+</script>

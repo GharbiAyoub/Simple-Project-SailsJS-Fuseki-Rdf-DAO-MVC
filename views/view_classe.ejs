@@ -1,0 +1,14 @@
+<ol class="breadcrumb">
+        <li class="breadcrumb-item">
+            <a href="/Personne/list">Personnes</a>
+            <a href="/Classe/list">Classes</a>
+        </li>
+    </ol>
+    <h1 class="display-4">Show Class</h1>
+    <form>
+        <input type="hidden" name="id" class="form-control" value="<%= classe.id.value %>">
+        <div class="form-group">
+            <label for="title">libellé</label>
+            <input type="text" name="libelle" class="form-control" value="<%= classe.libelle.value %>">
+        </div>
+    </form>

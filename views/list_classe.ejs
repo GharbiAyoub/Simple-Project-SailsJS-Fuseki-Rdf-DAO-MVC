@@ -1,0 +1,35 @@
+<div id="content">
+    <h1 class="display-4">Classes</h1>
+    <table class="table table-striped">
+        <thead>
+            <tr>
+                <th>libellé</th>
+                <th></th>
+            </tr>
+        </thead>
+        <tbody>
+            <% classes.forEach(function(classe){ %>
+                <tr>
+                    <td>
+                        <%= classe.libelle.value %>
+                    </td>
+                    <td>
+                        <input type="submit" value="Delete" class="btn btn-danger" onclick="confirmDelete('<%=classe.id.value %>');">
+                    </td>
+                </tr>
+                <% }) %>
+        </tbody>
+    </table>
+</div>
+<a class="nav-link" href="/classe/add">Add Class</a>
+<script>
+    function confirmDelete(x) {
+        alertify.confirm("Are you sure ?",
+            function () {
+                document.location.href = "/classe/delete/" + x;
+            },
+            function () {
+                //alertify.error('Cancel');
+            })
+    }
+</script>
