@@ -7,8 +7,8 @@
 const FillPdf = require('../implementations/FillPdf');
 const Classe = require('../implementations/ClasseImpl');
 const SparqlClient = require('sparql-client-2');
-var user = 'gharbi';
-var password = 'ayoub';
+var user = '';
+var password = '';
 const endpoint = 'http://' + user + ':' + password + '@localhost:3030/db';
 var client = new SparqlClient(endpoint);
 
